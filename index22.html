@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PromptReveal — Detect Hidden Text in PDFs & Word Files</title>
+<meta name="description" content="Detect hidden prompt injections, invisible text, and suspicious AI instructions inside PDF and DOCX documents. Free, private, browser-based.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-container">
+        <a href="../index.html" class="logo">
+            <i class="fa-solid fa-user-secret"></i>
+            Prompt<span>Revealer</span>
+        </a>
+        <nav class="main-nav">
+            <a href="../PhotoRevealer/hide.html">Hide in Photo</a>
+            <a href="../PhotoRevealer/extract.html">Extract from Photo</a>
+            <a href="index22.html">Find Hidden Text</a>
+        </nav>
+    </div>
+</header>
+
+<div id="homepage">
+
+  <section class="hero" id="home">
+    <div class="hero-badge"><span></span> Free &amp; Privacy-First Tool</div>
+    <h1>Reveal Hidden Text in<br><em>PDFs &amp; Word Files</em></h1>
+    <p>Detect invisible instructions, white-colored text, and AI prompt injections secretly embedded inside documents — instantly, in your browser.</p>
+    <div class="upload-wrap" id="tool">
+      <div class="upload-zone" id="uploadZone">
+        <input type="file" id="fileInput" accept=".pdf,.docx,.doc">
+        <div class="upload-icon-wrap">📄</div>
+        <h3>Drop your file here</h3>
+        <p>or click to browse from your computer</p>
+        <div class="fmt-row">
+          <span class="fmt">PDF</span>
+          <span class="fmt">DOCX</span>
+          <span class="fmt">DOC</span>
+        </div>
+      </div>
+      <button class="upload-btn" id="uploadBtn">Select File to Reveal Hidden Text</button>
+      <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="status-txt" id="statusTxt"></div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="section-inner">
+      <div class="section-label">How It Works</div>
+      <div class="section-title">Three steps to full document transparency</div>
+      <p class="section-sub">No signup. No server uploads. No complexity. Upload and reveal in seconds.</p>
+      <div class="steps">
+        <div class="step-card"><div class="step-num">1</div><h4>Upload Your Document</h4><p>Drag and drop or select any PDF or DOCX file. Everything runs inside your browser — no server involved.</p></div>
+        <div class="step-card"><div class="step-num">2</div><h4>Reveal Hidden Text</h4><p>All text including white, tiny, and off-page content is extracted and displayed in orange so nothing stays invisible.</p></div>
+        <div class="step-card"><div class="step-num">3</div><h4>Inspect Suspicious Prompts</h4><p>Our threat engine scans for 20+ injection patterns and flags dangerous AI manipulation instructions automatically.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section features-bg">
+    <div class="section-inner">
+      <div class="section-label">Features</div>
+      <div class="section-title">Everything you need to inspect a document</div>
+      <div class="features-grid">
+        <div class="feat-card"><div class="feat-icon">📄</div><h4>PDF &amp; DOCX Support</h4><p>Full text layer extraction from both major document formats with metadata inspection.</p></div>
+        <div class="feat-card"><div class="feat-icon">👁️</div><h4>Hidden Text Detection</h4><p>Reveals white text, zero-size fonts, off-page content, and zero-width unicode characters.</p></div>
+        <div class="feat-card"><div class="feat-icon">🟠</div><h4>Orange Reveal Mode</h4><p>Forces all extracted text to orange so previously invisible white text becomes clearly visible.</p></div>
+        <div class="feat-card"><div class="feat-icon">🔒</div><h4>No File Storage</h4><p>Files are processed in your browser only. Nothing is ever sent to or stored on any server.</p></div>
+        <div class="feat-card"><div class="feat-icon">⚡</div><h4>Instant Processing</h4><p>Results appear in seconds using native browser PDF and DOCX parsing APIs.</p></div>
+        <div class="feat-card"><div class="feat-icon">📋</div><h4>Copy &amp; Download</h4><p>Copy all extracted text or download a full threat report as a TXT file.</p></div>
+        <div class="feat-card"><div class="feat-icon">🛡️</div><h4>20+ Injection Patterns</h4><p>Detects persona injections, jailbreaks, LLM format tokens, base64 obfuscation, and more.</p></div>
+        <div class="feat-card"><div class="feat-icon">🔍</div><h4>Search &amp; Filter</h4><p>Search through all extracted blocks and filter to show only suspicious content instantly.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">Use Cases</div>
+      <div class="section-title">Who uses PromptReveal?</div>
+      <div class="use-cases">
+        <div class="use-card"><span class="use-icon">🎓</span><h4>Students &amp; Educators</h4><p>Verify academic submissions contain no hidden AI manipulation instructions.</p></div>
+        <div class="use-card"><span class="use-icon">🤖</span><h4>AI Developers</h4><p>Test document-based AI pipelines against real-world prompt injection attacks.</p></div>
+        <div class="use-card"><span class="use-icon">🔐</span><h4>Security Researchers</h4><p>Audit PDF files for embedded attack payloads and obfuscated instructions.</p></div>
+        <div class="use-card"><span class="use-icon">⚖️</span><h4>Legal &amp; Compliance</h4><p>Ensure contract documents contain no hidden or manipulated content.</p></div>
+        <div class="use-card"><span class="use-icon">📰</span><h4>Journalists</h4><p>Inspect source documents for hidden editorial instructions or tampering signs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section features-bg" id="privacy">
+    <div class="section-inner">
+      <div class="section-label">Privacy First</div>
+      <div class="section-title">Your documents never leave your device</div>
+      <div class="privacy-card">
+        <div class="privacy-grid">
+          <div class="priv-item"><div class="priv-check">✓</div><p>Files are never uploaded to any server</p></div>
+          <div class="priv-item"><div class="priv-check">✓</div><p>All processing happens inside your browser</p></div>
+          <div class="priv-item"><div class="priv-check">✓</div><p>No account or login required ever</p></div>
+          <div class="priv-item"><div class="priv-check">✓</div><p>No tracking of uploaded documents</p></div>
+          <div class="priv-item"><div class="priv-check">✓</div><p>Files cleared from memory after analysis</p></div>
+          <div class="priv-item"><div class="priv-check">✓</div><p>100% free with no hidden costs</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- OUTPUT SECTION -->
+<div class="output-section" id="outputSection">
+  <div class="output-header">
+    <div>
+      <div class="output-title">Analysis Results</div>
+      <div id="outputFilename" style="font-size:0.82rem;color:var(--muted);margin-top:2px"></div>
+    </div>
+    <button class="btn btn-outline" id="newScanBtn">↺ New Scan</button>
+  </div>
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-n" id="sTotal">0</div><div class="stat-l">Text Blocks</div></div>
+    <div class="stat-box"><div class="stat-n orange" id="sChars">0</div><div class="stat-l">Characters</div></div>
+    <div class="stat-box"><div class="stat-n red" id="sSusp">0</div><div class="stat-l">Suspicious</div></div>
+    <div class="stat-box"><div class="stat-n" style="color:#ea580c" id="sHidden">0</div><div class="stat-l">Hidden Text</div></div>
+  </div>
+  <div class="threats-box" id="threatsBox">
+    <div class="threats-title">⚠ Threats Detected</div>
+    <div id="threatsList"></div>
+  </div>
+  <div class="toolbar">
+    <input class="tool-search" id="searchInput" placeholder="Search extracted text...">
+    <button class="btn btn-outline" id="copyBtn">⎘ Copy All</button>
+    <button class="btn btn-outline" id="downloadBtn">↓ Download Report</button>
+    <button class="btn btn-red" id="revealBtn">👁 Show Suspicious Only</button>
+  </div>
+  <div class="panel">
+    <div class="panel-top">
+      <span>Extracted Content — All text forced visible in orange</span>
+      <span id="blockCount"></span>
+    </div>
+    <div class="panel-body" id="panelBody"></div>
+  </div>
+</div>
+
+<!-- THANK YOU PAGE -->
+<div class="thankyou" id="thankyouPage">
+  <div class="check-anim">✅</div>
+  <h2>Analysis Complete!</h2>
+  <p>Your document has been successfully analyzed. Review the results above or start a new scan below.</p>
+  <div class="ty-btns">
+    <button class="btn btn-red" id="analyzeAnotherBtn">Analyze Another File</button>
+    <button class="btn btn-outline" id="returnHomeBtn">Return Home</button>
+  </div>
+</div>
+
+<footer class="footer">
+    <div class="container footer-container">
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="#">Pricing</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact</a>
+        </div>
+        <p>&copy; 2026 PromptRevealer. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

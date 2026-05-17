@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hide Text in Image - PhotoReveler</title>
+    <link rel="stylesheet" href="photoreveler.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body class="tool-page">
+    <header class="header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo">
+                <i class="fa-solid fa-user-secret"></i>
+                Prompt<span>Revealer</span>
+            </a>
+            <nav class="main-nav">
+                <a href="hide.html">Hide in Photo</a>
+                <a href="extract.html">Extract from Photo</a>
+                <a href="../TextReveler/index22.html">Find Hidden Text</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="tool-container">
+        <div class="tool-header">
+            <h1>Hide Text in Image</h1>
+            <p>Select an image and enter the secret text you want to hide inside it.</p>
+        </div>
+
+        <div class="workspace">
+            <div class="main-panel">
+                <div class="drop-zone ilovepdf-dropzone" id="dropZone">
+                    <div class="drop-content">
+                        <svg viewBox="0 0 24 24" width="64" height="64" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        <span id="dropZoneText">Select Image file</span>
+                        <span class="sub-text">or drop image here</span>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="preview-area" id="previewArea" style="display: none;">
+                    <div class="preview-box">
+                        <img id="origPreview" alt="Original Preview">
+                        <div class="file-name" id="fileNameDisplay"></div>
+                    </div>
+                </div>
+                
+                <div class="download-area" id="downloadArea" style="display: none;">
+                    <div class="success-message">
+                        <h2>Image processed successfully!</h2>
+                        <p>Your secret text is now hidden inside the image.</p>
+                    </div>
+                    <button class="btn-hero" id="btnDownload">Download Image</button>
+                    <a href="hide.html" class="link-btn">Start over</a>
+                </div>
+            </div>
+
+            <div class="sidebar" id="sidebarOptions">
+                <div class="sidebar-header">Options</div>
+                <div class="sidebar-content">
+                    <div class="form-group">
+                        <label for="textContent">Secret Text</label>
+                        <textarea id="textContent" placeholder="Type the text you want to hide..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password (Optional)</label>
+                        <input type="password" id="password" placeholder="For extra security">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Output Format</label>
+                        <div class="radio-group">
+                            <label><input type="radio" id="pngFmt" name="downloadFormat" value="image/png" checked> PNG (Recommended)</label>
+                            <label><input type="radio" id="jpegFmt" name="downloadFormat" value="image/jpeg"> JPEG</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-footer">
+                    <button class="btn-action" id="btnEncrypt">Hide Text <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="#">Pricing</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+            </div>
+            <p>&copy; 2026 PromptRevealer. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Hidden canvas for processing -->
+    <canvas id="processCanvas" style="display:none;"></canvas>
+
+    <script src="photoreveler.js"></script>
+    <script>
+        // Init logic for hide tool
+        initHideTool();
+    </script>
+</body>
+</html>
